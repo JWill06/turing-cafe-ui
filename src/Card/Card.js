@@ -2,20 +2,9 @@ import React, {useState, useEffect} from 'react'
 import './Card.css'
 import ApiCall from '../ApiCall'
 
-function Card() {
-    const [reservations, setReservations] = useState([])
+function Card({reservations, handleDelete}) {
 
-    useEffect(() => {
-        fetch('http://localhost:3001/api/v1/reservations')
-        .then(response => response.json())
-        .then(data => setReservations(data))
-        .catch(err => console.error('Failed to fetch', err))
-    }, [])
-
-    const handleDelete = (deletedReservationId) => {
-        const certainReservations = reservations.filter(reservation => reservation.id !== deletedReservationId)
-        setReservations(certainReservations)
-    }
+   
     return (
         <>
         {reservations.map(reservation=> (

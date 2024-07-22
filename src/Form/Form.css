@@ -1,0 +1,19 @@
+.formWrapper {
+    width: 90vw;
+    height: 10vh;
+}
+
+input {
+    width: 10%;
+    height: 3vh;
+    margin: 10px;
+}
+
+.submitButton {
+    background-color: teal;
+    width: 12%;
+    height: 3em;
+    border: 2px solid white;
+    color: white;
+    font-size: 20px;
+}

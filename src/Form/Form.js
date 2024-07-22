@@ -1,51 +1,59 @@
 import React, {useState} from 'react'
+import './Form.css'
 
 
-function Form() {
+function Form({setReservations}) {
     const [name, setName] = useState('')
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    const [guests, setGuests] = useState(0)
+    const [number, setNumber] = useState('')
     const [error, setError] = useState('')
-    const [details, setDetails] = useState([])
-
-    const onSubmit = (newDetails) => {
-        setDetails([...details, newDetails])
-    }
 
     const newReservation = (e) => {
         e.preventDefault();
 
-        if(!name.trim() & !date.trim() & !time.trim() & !guests.trim()){
+        if(!name.trim() && !date.trim() && !time.trim() && !number.trim()){
             setError('All fields are required for submission')
             return
         }
-        onSubmit({name, date, time, guests})
+        setReservations(prevReservations => [...prevReservations, {name, date, time, number}])
         setDate('')
-        setGuests('')
+        setNumber('')
         setName('')
     }
   return (
-    <div>
+    <div className='formWrapper'>
         <form onSubmit={newReservation}>
         <input 
         type='text'
         value={name}
-        onChange={(e) => e.target.value}
+        onChange={(e) => setName(e.target.value)}
         placeholder='First Name'
+        name='name'
         />
         <input 
-        type='date'
+        type='text'
         value={date}
-        onChange={(e) => e.target.value}
-        placeholder='Date'
+        onChange={(e) => setDate(e.target.value)}
+        placeholder='MM/DD'
+        pattern='\d{2}/\d{2}'
+        name='date'
         />
         <input 
         type='time'
         value={time}
-        onChange={(e) => e.target.value}
+        onChange={(e) => setTime(e.target.value)}
         placeholder='Time'
+        name='time'
         />
+        <input
+        type='number'
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}
+        placeholder='Number of Guests'
+        name='number'
+        />
+        <button type='submit' className='submitButton'>Make Reservation</button>
         </form>
     </div>
   )
