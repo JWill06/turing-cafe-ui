@@ -1,0 +1,30 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 20vh;
+    max-width: 20vw;
+    max-height: 20vh;
+    background-color: white;
+    border: 10px solid  teal;
+    border-radius: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    color:  teal;
+    padding: 8px;
+}
+
+.date,
+.time,
+.numGuests {
+    font-size: 20px;
+}
+
+.remove {
+    width: 150px;
+    background-color:  teal;
+    font-size: 25px;
+    color: white;
+    margin-bottom: 5px;
+}
